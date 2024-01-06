@@ -1,3 +1,4 @@
+/*
 #include "supermorpion.h"
 
 void showposition(morpion M){
@@ -105,3 +106,4 @@ morpion *createmorpion(){
     M->p=PLAYERX;
     return M;
 }
+*/

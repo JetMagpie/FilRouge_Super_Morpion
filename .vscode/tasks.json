@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build all C files",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "*.c",
+                "-o",
+                "morpion"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
