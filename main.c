@@ -2,8 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-//#include "morpion.h"
-//#include "supermorpion.h"
+#include "morpion.h"
+#include "supermorpion.h"
 #include "minimax.h"
 
 int main(){
@@ -30,7 +30,7 @@ int main(){
     printf("}\n");
     */
 
-    SuperMorpion game;
+/**/    SuperMorpion game;
     initializeSuperMorpion(&game);
     //game.smallGrids[1][1].grid[1][1]='x';
     game.currentPlayer='x';
