@@ -2,6 +2,8 @@
 #include <string.h>
 #include "supermorpion.h"
 
+
+
 void displayGame(SuperMorpion *game) {
     for (int row = 0; row < 3; row++) {
         if (row > 0) {
@@ -33,9 +35,39 @@ void initializeSuperMorpion(SuperMorpion *game) {
         for (int j = 0; j < 3; j++) {
             // Initialiser chaque petite grille
             initializeGrid(&(game->smallGrids[i][j])) ;
-            //game->smallGrids[i][j].currentPlayer = 'X'; // Initialiser le premier joueur, par exemple 'X'
+            game->smallGrids[i][j].winner = ' '; 
         }
     }
+    game->lastMoveCol=-1;
+    game->lastMoveRow=-1;
+}
+
+
+int validateMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex) {
+    // Validation des indices
+    if (gridIndex < 0 || gridIndex >= 9 ||
+        rowIndex < 0 || rowIndex >= 3 ||
+        colIndex < 0 || colIndex >= 3) {
+        printf("Coup invalide. Réessayez.\n");
+        return 0; // Coup invalide
+    }
+
+    // Vérifier si le coup est dans la bonne grille
+    if ((game->lastMoveRow != -1 && game->lastMoveCol != -1 && 
+         gridIndex != game->lastMoveRow * 3 + game->lastMoveCol) ||
+        game->smallGrids[gridIndex / 3][gridIndex % 3].winner != ' ') {
+  //          printf("%d %d %d winner:%c\n",game->lastMoveRow ,game->lastMoveCol,gridIndex,game->smallGrids[gridIndex / 3][gridIndex % 3].winner);
+//        printf("Coup invalide. Réessayez.\n");
+        return 0; // Coup invalide
+    }
+
+    // Vérifier si la case est vide
+    if (game->smallGrids[gridIndex / 3][gridIndex % 3].grid[rowIndex][colIndex] != ' ') {
+        printf("Coup invalide. Réessayez.\n");
+        return 0; // Coup invalide
+    }
+
+    return 1; // Coup valide
 }
 
 int inputMove(SuperMorpion *game) {
@@ -53,19 +85,42 @@ int inputMove(SuperMorpion *game) {
     int colIndex = col - 'a';
 
     // Validation des indices
-    if (gridIndex < 0 || gridIndex >= 9 ||
-        rowIndex < 0 || rowIndex >= 3 ||
-        colIndex < 0 || colIndex >= 3 ||
-        game->smallGrids[gridIndex / 3][gridIndex % 3].grid[rowIndex][colIndex] != ' ') {
-        printf("Coup invalide. Réessayez.\n");
-        return 0; // Coup invalide
-    }
+            for(int i=0;i<3;i++)
+            for(int j=0;j<3;j++)
+            {   
+                updateGridState(&game->smallGrids[i][j]);
+            }
+    
+    char stat=game->smallGrids[game->lastMoveRow][game->lastMoveCol].winner;
+    if(stat=='x' || stat=='o' || stat=='d' ){
+        game->lastMoveRow=-1;
+        game->lastMoveCol=-1;
 
+    }
+    if (!validateMove(game, gridIndex, rowIndex, colIndex)) {
+        printf("Coup invalide. Réessayez.\n");
+        for(int i=0;i<3;i++)
+            for(int j=0;j<3;j++)
+            {   
+                stat=game->smallGrids[i][j].winner;
+        if(stat=='x' || stat=='o' || stat=='d' ){
+        printf("vailde coupe:%d %d \n",i,j);
+
+    }
+            }
+                
+        return 0; // Coup invalide, ne pas continuer
+    }
     // Appliquer le coup
     game->smallGrids[gridIndex / 3][gridIndex % 3].grid[rowIndex][colIndex] = game->currentPlayer;
-
+    game->lastMoveRow=rowIndex;
+    game->lastMoveCol=colIndex;
+    updateGridState(&game->smallGrids[gridIndex / 3][gridIndex % 3]);
+    stat=game->smallGrids[gridIndex/3][gridIndex%3].winner;
     // Changer le joueur actuel
+    
     game->currentPlayer = (game->currentPlayer == 'x') ? 'o' : 'x';
+    
 
     return 1; // Succès
 }
@@ -73,7 +128,7 @@ int inputMove(SuperMorpion *game) {
 char* generateSmallGridGraphviz(GameState grid) {
     static char buffer[1024];
     snprintf(buffer, sizeof(buffer), 
-        "<TABLE border=\"0\" cellspacing=\"0\" cellpadding=\"4\" style=\"rounded\" bgcolor=\"white\">\n");
+        "<TABLE border=\"1\" cellspacing=\"0\" cellpadding=\"4\" style=\"rounded\" bgcolor=\"white\">\n");
 
     for (int i = 0; i < 3; i++) {
         strcat(buffer, "  <TR>\n");
@@ -94,7 +149,7 @@ void displaySuperMorpionGraphviz(SuperMorpion *game, FILE *file) {
     fprintf(file, "digraph super_morpion {\n");
     fprintf(file, "  node [shape=none];\n");
     fprintf(file, "  a0 [label=<\n");
-    fprintf(file, "  <TABLE border=\"0\" cellspacing=\"10\" cellpadding=\"10\" style=\"rounded\" bgcolor=\"black\">\n");
+    fprintf(file, "  <TABLE border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"rounded\" bgcolor=\"black\">\n");
 
     for (int i = 0; i < 3; i++) {
         fprintf(file, "    <TR>\n");
@@ -107,4 +162,41 @@ void displaySuperMorpionGraphviz(SuperMorpion *game, FILE *file) {
     fprintf(file, "  </TABLE>\n");
     fprintf(file, "  >];\n");
     fprintf(file, "}\n");
+}
+
+void updateGridState(GameState *grid) {
+    // Vérifier les victoires pour 'x' et 'o'
+    const char players[2] = {'x', 'o'};
+    for (int p = 0; p < 2; p++) {
+        char player = players[p];
+        // Vérifier les lignes, colonnes et diagonales pour un alignement gagnant
+        for (int i = 0; i < 3; i++) {
+            if ((grid->grid[i][0] == player && grid->grid[i][1] == player && grid->grid[i][2] == player) ||
+                (grid->grid[0][i] == player && grid->grid[1][i] == player && grid->grid[2][i] == player)) {
+                grid->winner = player; // Le joueur a gagné
+                return;
+            }
+        }
+        if ((grid->grid[0][0] == player && grid->grid[1][1] == player && grid->grid[2][2] == player) ||
+            (grid->grid[0][2] == player && grid->grid[1][1] == player && grid->grid[2][0] == player)) {
+            grid->winner = player; // Le joueur a gagné
+            return;
+        }
+    }
+
+    // Vérifier si la grille est complète sans gagnant
+    int isFull = 1;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (grid->grid[i][j] == ' ') {
+                isFull = 0;
+                break;
+            }
+        }
+        if (!isFull) break;
+    }
+
+    if (isFull && grid->winner == ' ') {
+        grid->winner = 'd'; // Marquez comme match nul
+    }
 }

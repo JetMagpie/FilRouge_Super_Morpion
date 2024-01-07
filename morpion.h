@@ -4,7 +4,8 @@
 // Structure pour représenter l'état du jeu
 typedef struct {
     char grid[3][3];
-    char currentPlayer;
+    char currentPlayer; // 'x' ou 'o'
+    char winner; // 'x', 'o', ou ' ' si pas encore de gagnant
 } GameState;
 
 // Fonction pour initialiser la grille de jeu

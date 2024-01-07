@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 //#include "morpion.h"
-#include "supermorpion.h"
+//#include "supermorpion.h"
+#include "minimax.h"
 
 int main(){
 
@@ -32,7 +33,6 @@ int main(){
     SuperMorpion game;
     initializeSuperMorpion(&game);
     //game.smallGrids[1][1].grid[1][1]='x';
-    
     game.currentPlayer='x';
     int gameOver=0;
     while (!gameOver) {
@@ -42,6 +42,11 @@ int main(){
             // Demande à nouveau si la saisie est invalide
             continue;
         }
+
+        displayGame(&game);
+
+        computerMove(&game);
+
         // ... affichage du jeu ...
         displayGame(&game);
 
@@ -50,7 +55,18 @@ int main(){
         fclose(file);
 
         system("dot output.dot -T png -o output.png");
+
         // Vérifier l'état du jeu
-        // ...
+        gameOver= evaluateGameState(&game);
+        if (gameOver != 0) break; // Le jeu est terminé
+
+
+    }
+    if (gameOver == 10) {
+        printf("Joueur 'x' gagne!\n");
+    } else if (gameOver == -10) {
+        printf("Joueur 'o' gagne!\n");
+    } else {
+        printf("Match nul!\n");
     }
 }
