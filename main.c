@@ -6,11 +6,11 @@
 #include "supermorpion.h"
 #include "minimax.h"
 
-int main(){
+int main(int argc, char *argv[]){
+    GameState gameState;
 
     //test 
-    GameState gameState;
-    parseFEN("o2xoox2 x", &gameState);
+    //parseFEN("o2xoox2 x", &gameState);
 
  /*   // Afficher la grille et le joueur actuel pour tester
     for (int i = 0; i < 3; ++i) {
@@ -24,13 +24,15 @@ int main(){
     printf("Winner : %d\n",minimax(&gameState,gameState.currentPlayer));
     */
 
-   /*
+#ifdef TTTREE_ENABLE
+    parseFEN(argv[1], &gameState);
     printf("digraph {\n");
     generateDecisionTree(&gameState,-1);
     printf("}\n");
-    */
+#endif
 
-/**/    SuperMorpion game;
+#ifdef SM_REFRESH_ENABLE
+    SuperMorpion game;
     initializeSuperMorpion(&game);
     //game.smallGrids[1][1].grid[1][1]='x';
     game.currentPlayer='x';
@@ -69,4 +71,5 @@ int main(){
     } else {
         printf("Match nul!\n");
     }
+#endif
 }
