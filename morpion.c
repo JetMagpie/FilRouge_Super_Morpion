@@ -91,7 +91,10 @@ int checkGameOver(GameState *gameState, char player) {
 // Fonction minimax
 int minimax(GameState *gameState, char player) {
     int score = checkGameOver(gameState, player);
-    if (score != 2) return score;
+    if (score != 2){
+        gameState->minimax=score;//enregistrer le score
+        return score;
+    }
 
     int bestScore = (player == 'x') ? -10 : 10; // Initialisation pour maximiser ou minimiser
 
@@ -114,6 +117,7 @@ int minimax(GameState *gameState, char player) {
                 } else {
                     bestScore = (currentScore < bestScore) ? currentScore : bestScore;
                 }
+                gameState->minimax=bestScore;//enregistrer le score
             }
         }
     }
@@ -122,6 +126,7 @@ int minimax(GameState *gameState, char player) {
 }
 
 void generateGraphvizNode(GameState *gameState, int currentId) {
+    minimax(gameState, gameState->currentPlayer);
     printf("  m%d [shape=none label=<\n", currentId);
     printf(" <TABLE border=\"0\" cellspacing=\"10\" cellpadding=\"10\" style=\"rounded\" bgcolor=\"black\">\n");
 
@@ -133,13 +138,13 @@ void generateGraphvizNode(GameState *gameState, int currentId) {
         }
         printf("  </TR>\n");
     }
-
     // Ajouter une ligne pour le nom du nœud
     if(gameState->currentPlayer == 'o')
         printf("  <TR><TD bgcolor=\"red\" colspan=\"3\">m%d</TD></TR>\n", currentId);
     else
         printf("  <TR><TD bgcolor=\"green\" colspan=\"3\">m%d</TD></TR>\n", currentId);
     printf("</TABLE>>];\n");
+    printf("m%d [xlabel=\"%d\"];\n",currentId,gameState->minimax);
 }
 
 void generateDecisionTree(GameState *gameState,int parentId) {

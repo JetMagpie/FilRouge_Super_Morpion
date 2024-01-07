@@ -6,6 +6,7 @@ typedef struct {
     char grid[3][3];
     char currentPlayer; // 'x' ou 'o'
     char winner; // 'x', 'o', ou ' ' si pas encore de gagnant
+    int minimax;
 } GameState;
 
 // Fonction pour initialiser la grille de jeu
