@@ -1,0 +1,175 @@
+digraph super_morpion {
+  node [shape=none];
+  a0 [label=<
+  <TABLE border="0" cellspacing="10" cellpadding="10" style="rounded" bgcolor="black">
+    <TR>
+      <TD><TABLE border="0" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+</TABLE>
+</TD>
+      <TD><TABLE border="0" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+</TABLE>
+</TD>
+      <TD><TABLE border="0" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white">x</TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+</TABLE>
+</TD>
+    </TR>
+    <TR>
+      <TD><TABLE border="0" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+</TABLE>
+</TD>
+      <TD><TABLE border="0" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+</TABLE>
+</TD>
+      <TD><TABLE border="0" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+</TABLE>
+</TD>
+    </TR>
+    <TR>
+      <TD><TABLE border="0" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+</TABLE>
+</TD>
+      <TD><TABLE border="0" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+</TABLE>
+</TD>
+      <TD><TABLE border="0" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+</TABLE>
+</TD>
+    </TR>
+  </TABLE>
+  >];
+}

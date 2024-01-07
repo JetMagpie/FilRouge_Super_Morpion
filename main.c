@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <string.h>
-#include "morpion.h"
-//#include "supermorpion.h"
+#include <stdlib.h>
+#include <unistd.h>
+//#include "morpion.h"
+#include "supermorpion.h"
 
 int main(){
 
@@ -21,7 +23,34 @@ int main(){
     printf("Winner : %d\n",minimax(&gameState,gameState.currentPlayer));
     */
 
-   printf("digraph {\n");
+   /*
+    printf("digraph {\n");
     generateDecisionTree(&gameState,-1);
     printf("}\n");
+    */
+
+    SuperMorpion game;
+    initializeSuperMorpion(&game);
+    //game.smallGrids[1][1].grid[1][1]='x';
+    
+    game.currentPlayer='x';
+    int gameOver=0;
+    while (!gameOver) {
+
+
+        if (!inputMove(&game)) {
+            // Demande à nouveau si la saisie est invalide
+            continue;
+        }
+        // ... affichage du jeu ...
+        displayGame(&game);
+
+         FILE *file = fopen("output.dot", "w");
+        displaySuperMorpionGraphviz(&game,file); // Appel de la fonction qui écrit dans stdout
+        fclose(file);
+
+        system("dot output.dot -T png -o output.png");
+        // Vérifier l'état du jeu
+        // ...
+    }
 }
