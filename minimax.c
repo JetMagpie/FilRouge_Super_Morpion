@@ -2,7 +2,7 @@
 #include <string.h>
 #include "minimax.h"
 
-int MAXdep=2;
+int MAXdep=7;
 
 int min(int a, int b) {
     return (a < b) ? a : b;
