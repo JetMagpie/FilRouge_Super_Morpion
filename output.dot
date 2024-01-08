@@ -159,11 +159,11 @@ digraph super_morpion {
   </TR>
   <TR>
 <TD bgcolor="white">o</TD>
-<TD bgcolor="white">x</TD>
 <TD bgcolor="white"> </TD>
+<TD bgcolor="white">x</TD>
   </TR>
   <TR>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
 <TD bgcolor="white">o</TD>
 <TD bgcolor="white">x</TD>
   </TR>

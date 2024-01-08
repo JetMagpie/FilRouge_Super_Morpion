@@ -62,7 +62,7 @@ int superminimax(SuperMorpion *game, int depth, char player) {
         if(isFinal(game)) return 0;
     }
 
-    int bestScore = (player == 'x') ? -10 : 10;
+    int bestScore = (player == 'x') ? -100 : 100;
     int targetGridRow = game->lastMoveRow;
     int targetGridCol = game->lastMoveCol;
 
@@ -87,6 +87,10 @@ int superminimax(SuperMorpion *game, int depth, char player) {
                             int currentScore = -superminimax(game, depth + 1, (player == 'x') ? 'o' : 'x');
 
                             // Mettre à jour le meilleur score
+                            if(bestScore<currentScore) 
+                            {
+                                bestScore=currentScore;
+                            }
                             bestScore = max(bestScore, currentScore);
                             
                             // Annuler le coup
@@ -194,7 +198,7 @@ void computerMove(SuperMorpion *game) {
                         game->smallGrids[gridRow][gridCol].grid[row][col] = currentPlayer;
                         game->currentPlayer=opponentPlayer;
                         // Appeler minimax
-                        int score = superminimax(game, 0, opponentPlayer); 
+                        int score = -superminimax(game, 0, opponentPlayer); 
                         // Annuler le coup
                         game->smallGrids[gridRow][gridCol].grid[row][col] = ' ';
                         game->currentPlayer=currentPlayer;
