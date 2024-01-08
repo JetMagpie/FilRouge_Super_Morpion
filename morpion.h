@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#ifndef MORPION_H
-#define MORPION_H
+
 
 // Structure pour représenter l'état du jeu
 typedef struct {
@@ -26,4 +25,3 @@ int minimax(GameState *gameState, char player) ;
 void generateGraphvizNode(GameState *gameState, int nodeId) ;
 
 void generateDecisionTree(GameState *gameState, int parentId) ;
-#endif

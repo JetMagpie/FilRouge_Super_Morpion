@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "morpion.h"
-#ifndef SUPERMORPION_H
-#define SUPERMORPION_H
+
 
 
 typedef struct {
@@ -25,4 +24,5 @@ void displaySuperMorpionGraphviz(SuperMorpion *game, FILE *file) ;
 int validateMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex) ;
 
 void updateGridState(GameState *grid) ;
-#endif
+
+void superparseFEN(SuperMorpion *game, const char *fen) ;

@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -std=c99
-SRCS = main.c minimax.c morpion.c supermorpion.c
+SRCS =  minimax.c morpion.c supermorpion.c main.c
 
 all: sm_refresh
 

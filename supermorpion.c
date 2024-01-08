@@ -48,7 +48,7 @@ int validateMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex) 
     if (gridIndex < 0 || gridIndex >= 9 ||
         rowIndex < 0 || rowIndex >= 3 ||
         colIndex < 0 || colIndex >= 3) {
-        printf("Coup invalide. Réessayez.\n");
+      //  printf("Coup invalide. Réessayez.\n");
         return 0; // Coup invalide
     }
 
@@ -63,7 +63,7 @@ int validateMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex) 
 
     // Vérifier si la case est vide
     if (game->smallGrids[gridIndex / 3][gridIndex % 3].grid[rowIndex][colIndex] != ' ') {
-        printf("Coup invalide. Réessayez.\n");
+  //      printf("Coup invalide. Réessayez.\n");
         return 0; // Coup invalide
     }
 
@@ -165,6 +165,7 @@ void displaySuperMorpionGraphviz(SuperMorpion *game, FILE *file) {
 }
 
 void updateGridState(GameState *grid) {
+    grid->winner=' ';
     // Vérifier les victoires pour 'x' et 'o'
     const char players[2] = {'x', 'o'};
     for (int p = 0; p < 2; p++) {
@@ -199,4 +200,51 @@ void updateGridState(GameState *grid) {
     if (isFull && grid->winner == ' ') {
         grid->winner = 'd'; // Marquez comme match nul
     }
+}
+
+void superparseFEN(SuperMorpion *game, const char *fen) {
+    int fenIndex = 0;
+
+    // Lire les 9 chaînes FEN pour chaque petite grille
+    for (int i = 0; i < 9; i++) {
+        GameState *grid = &game->smallGrids[i / 3][i % 3];
+        grid->winner = ' '; // Initialiser le gagnant de la grille comme vide
+
+        for (int j = 0; j < 9; j++, fenIndex++) {
+            char c = fen[fenIndex];
+            if (c >= '1' && c <= '9') {
+                // Remplir les cases vides
+                int emptyCount = c - '0';
+                for (int k = 0; k < emptyCount; k++) {
+                    grid->grid[j / 3][j % 3] = ' ';
+                    if (k < emptyCount - 1) j++;
+                }
+            } else {
+                // Remplir avec 'x', 'o', ou marquer le gagnant de la grille
+                if (c == 'X') {
+                    grid->winner = 'x'; // La grille est gagnée par 'x'
+                    parseFEN("xxxxxxxxx x",grid);
+                    fenIndex++;
+                    break;
+                } else if (c == 'O') {
+                    grid->winner = 'o'; // La grille est gagnée par 'o'
+                    parseFEN("ooooooooo o",grid);
+                    fenIndex++;
+                    break;
+                } else {
+                    grid->grid[j / 3][j % 3] = c;
+                }
+            }
+        }
+    }
+
+    // Analyser le dernier coup joué et le joueur au trait
+    int lastMoveGrid,lastMoveCase;
+    
+    lastMoveGrid=fen[fenIndex+1]-'0';
+    lastMoveCase=fen[fenIndex+2]-'0';
+    game->currentPlayer=fen[fenIndex+4];
+    game->lastMoveCol=lastMoveCase%3-1;
+    game->lastMoveRow=(lastMoveCase+1)/3;
+    return ;
 }
