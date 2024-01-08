@@ -61,7 +61,7 @@ int superminimax(SuperMorpion *game, int depth, char player,int fathervalue) {
     else{
         if(isFinal(game)) return 0;
     }
-
+    int playersign= (player=='x') ? 1 : -1;
     int bestScore = -100 ;
     int targetGridRow = game->lastMoveRow;
     int targetGridCol = game->lastMoveCol;
@@ -89,7 +89,18 @@ int superminimax(SuperMorpion *game, int depth, char player,int fathervalue) {
 
                             
                             // Appel récursif de minimax
-                            int currentScore = -superminimax(game, depth + 1, (player == 'x') ? 'o' : 'x',bestScore);
+                            
+                            int currentScore = playersign * (game, depth + 1, (player == 'x') ? 'o' : 'x',bestScore);
+
+                            
+                            
+                            
+
+                            // Annuler le coup
+                            grid->grid[row][col] = ' ';
+                            grid->winner = ' ';
+                            game->currentPlayer = player; // Restaurer le joueur actuel
+
 
                             // Mettre à jour le meilleur score
                             if(bestScore<currentScore) 
@@ -98,14 +109,6 @@ int superminimax(SuperMorpion *game, int depth, char player,int fathervalue) {
                             }
                             
                             bestScore = max(bestScore, currentScore);
-                            
-                            
-
-                            // Annuler le coup
-                            grid->grid[row][col] = ' ';
-                            grid->winner = ' ';
-                            game->currentPlayer = player; // Restaurer le joueur actuel
-                            
                             
                             // la coupure alpha-bêta
                             if(bestScore>fathervalue && fathervalue != -1000 && bestScore!=-100) return bestScore;
@@ -123,7 +126,7 @@ int superminimax(SuperMorpion *game, int depth, char player,int fathervalue) {
     {
         int flag=1;
     }
-    return bestScore;
+    return playersign * bestScore;
 }
 
 int evaluateGameState(SuperMorpion *game) {
