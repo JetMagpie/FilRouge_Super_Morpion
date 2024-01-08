@@ -40,6 +40,7 @@ void initializeSuperMorpion(SuperMorpion *game) {
     }
     game->lastMoveCol=-1;
     game->lastMoveRow=-1;
+    game->currentPlayer='x';
 }
 
 

@@ -56,7 +56,7 @@ int playMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex) {
 int superminimax(SuperMorpion *game, int depth, char player,int fathervalue) {
     int score = evaluateGameState(game);
     if (depth >= MAXdep || score != 0) {
-        return (player=='x')? -score : score; // Retourner le score si jeu terminé ou profondeur max atteinte
+        return score; // Retourner le score si jeu terminé ou profondeur max atteinte
     }
     else{
         if(isFinal(game)) return 0;
@@ -80,7 +80,7 @@ int superminimax(SuperMorpion *game, int depth, char player,int fathervalue) {
                 for (int row = 0; row < 3; row++) {
                     for (int col = 0; col < 3; col++) {
                         if (grid->grid[row][col] == ' ') {
-                            if(gridRow==2 && gridCol==2)
+                            if(row==2 && col==0)
                             {
                                 int tt=1;
                             }
@@ -90,18 +90,18 @@ int superminimax(SuperMorpion *game, int depth, char player,int fathervalue) {
                             
                             // Appel récursif de minimax
                             
-                            int currentScore = playersign * (game, depth + 1, (player == 'x') ? 'o' : 'x',bestScore);
+                            int currentScore = playersign * superminimax(game, depth + 1, (player == 'x') ? 'o' : 'x',bestScore);
 
-                            
-                            
-                            
-
+                            if(depth==1)
+                            {
+                                int pp=1;
+                            }
                             // Annuler le coup
                             grid->grid[row][col] = ' ';
                             grid->winner = ' ';
                             game->currentPlayer = player; // Restaurer le joueur actuel
 
-
+                            
                             // Mettre à jour le meilleur score
                             if(bestScore<currentScore) 
                             {
@@ -111,8 +111,9 @@ int superminimax(SuperMorpion *game, int depth, char player,int fathervalue) {
                             bestScore = max(bestScore, currentScore);
                             
                             // la coupure alpha-bêta
-                            if(bestScore>fathervalue && fathervalue != -1000 && bestScore!=-100) return bestScore;
-                        }
+                            if(bestScore>fathervalue && fathervalue != -1000 && bestScore!=-100) 
+                            return bestScore;
+                            }
                             game->lastMoveRow=lastMoveRow;
                             game->lastMoveCol=lastMoveCol;
                             }
@@ -179,12 +180,8 @@ int evaluateGameState(SuperMorpion *game) {
             
         
 
-    // Si toutes les cases sont remplies et aucun alignement n'a été construit
-    if (emptySpaces == 0) {
         if (countX >= 5) return 10;  // 'x' gagne
         else if (countO >= 5) return -10; // 'o' gagne
-        else return 0; // Match nul si aucun joueur n'a 5 marqueurs
-    }
 
     return 0; // Le jeu continue
 }
@@ -216,7 +213,7 @@ void computerMove(SuperMorpion *game) {
                         game->currentPlayer=opponentPlayer;
                         // Appeler minimax
                         int playersign=(currentPlayer=='x') ? 1 : -1;
-                        int score = playersign * superminimax(game, 0, opponentPlayer,-1000); 
+                        int score = playersign * superminimax(game, 0, game->currentPlayer,-1000); 
                         // Annuler le coup
                         game->smallGrids[gridRow][gridCol].grid[row][col] = ' ';
                         game->currentPlayer=currentPlayer;

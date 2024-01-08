@@ -33,8 +33,8 @@ int main(){
     SuperMorpion game;
     initializeSuperMorpion(&game);
     //game.smallGrids[1][1].grid[1][1]='x';
-   char *str="1x3oxoxOOOX2xoxox1oXx2xo1xo1oox3oox 12 o";
-   superparseFEN(&game,str);
+  char *str="OXOXOXXOx7o 12 o";
+  superparseFEN(&game,str);
     displayGame(&game);
 
     
@@ -67,7 +67,7 @@ int main(){
         {
             int ij=1;
         }
-        if (isFinal) break; // Le jeu est terminé
+        if (isFinal(&game)) break; // Le jeu est terminé
 
 
     }
