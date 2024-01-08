@@ -63,7 +63,11 @@ int main(){
 
         // Vérifier l'état du jeu
         gameOver= evaluateGameState(&game);
-        if (gameOver != 0) break; // Le jeu est terminé
+        if(isFinal)
+        {
+            int ij=1;
+        }
+        if (isFinal) break; // Le jeu est terminé
 
 
     }

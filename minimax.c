@@ -170,18 +170,14 @@ int evaluateGameState(SuperMorpion *game) {
 
     for (int gridRow = 0; gridRow < 3; gridRow++) {
         for (int gridCol = 0; gridCol < 3; gridCol++) {
-            GameState *grid = &game->smallGrids[gridRow][gridCol];
-            if (grid->winner == ' ') { // Si la grille n'a pas encore de gagnant
-                for (int row = 0; row < 3; row++) {
-                    for (int col = 0; col < 3; col++) {
-                        if (grid->grid[row][col] == 'x') countX++;
-                        else if (grid->grid[row][col] == 'o') countO++;
-                        else emptySpaces++;
+            if (game->smallGrids[gridRow][gridCol].winner == ' ') emptySpaces++;
+            if (game->smallGrids[gridRow][gridCol].winner == 'o') countO++;
+            if (game->smallGrids[gridRow][gridCol].winner == 'x') countX++;
+
                     }
                 }
-            }
-        }
-    }
+            
+        
 
     // Si toutes les cases sont remplies et aucun alignement n'a été construit
     if (emptySpaces == 0) {
@@ -261,18 +257,13 @@ int isFinal(SuperMorpion *game) {
 
     for (int gridRow = 0; gridRow < 3; gridRow++) {
         for (int gridCol = 0; gridCol < 3; gridCol++) {
-            GameState *grid = &game->smallGrids[gridRow][gridCol];
-            if (grid->winner == ' ') { // Si la grille n'a pas encore de gagnant
-                for (int row = 0; row < 3; row++) {
-                    for (int col = 0; col < 3; col++) {
-                        if (grid->grid[row][col] == 'x') countX++;
-                        else if (grid->grid[row][col] == 'o') countO++;
-                        else emptySpaces++;
+            if (game->smallGrids[gridRow][gridCol].winner == ' ') emptySpaces++;
+            if (game->smallGrids[gridRow][gridCol].winner == 'o') countO++;
+            if (game->smallGrids[gridRow][gridCol].winner == 'x') countX++;
+
                     }
                 }
-            }
-        }
-    }
+            
 
     // Si toutes les cases sont remplies et aucun alignement n'a été construit
     if (emptySpaces == 0) {
