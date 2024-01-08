@@ -33,7 +33,7 @@ int main(){
     SuperMorpion game;
     initializeSuperMorpion(&game);
     //game.smallGrids[1][1].grid[1][1]='x';
-   char *str="xxoooxxoxOOOX2xooox1oXxxxxo1o2oox4ox 83 o";
+   char *str="1x3oxoxOOOX2xoxox1oXx2xo1xo1oox3oox 12 o";
    superparseFEN(&game,str);
     displayGame(&game);
 

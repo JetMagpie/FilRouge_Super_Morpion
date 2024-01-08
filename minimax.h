@@ -17,7 +17,7 @@ int isGridPlayable(GameState *grid);
 
 int playMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex) ;
 
-int superminimax(SuperMorpion *game, int depth, char player) ;
+int superminimax(SuperMorpion *game, int depth, char player,int fathervalue) ;
 
 int evaluateGameState(SuperMorpion *game) ;
 

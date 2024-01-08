@@ -52,12 +52,20 @@ int validateMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex) 
         return 0; // Coup invalide
     }
 
+    
     // Vérifier si le coup est dans la bonne grille
+        for(int i=0;i<3;i++)
+            for(int j=0;j<3;j++)
+            {   
+                updateGridState(&game->smallGrids[i][j]);
+            }
+
     if ((game->lastMoveRow != -1 && game->lastMoveCol != -1 && 
-         gridIndex != game->lastMoveRow * 3 + game->lastMoveCol) ||
+         gridIndex != game->lastMoveRow * 3 + game->lastMoveCol) && game->smallGrids[game->lastMoveRow][game->lastMoveCol].winner == ' ' ||
         game->smallGrids[gridIndex / 3][gridIndex % 3].winner != ' ') {
   //          printf("%d %d %d winner:%c\n",game->lastMoveRow ,game->lastMoveCol,gridIndex,game->smallGrids[gridIndex / 3][gridIndex % 3].winner);
 //        printf("Coup invalide. Réessayez.\n");
+        
         return 0; // Coup invalide
     }
 
@@ -73,7 +81,7 @@ int validateMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex) 
 int inputMove(SuperMorpion *game) {
     char col;
     int grid, row;
-    printf("Entrez votre coup (ex: 3 c3): ");
+    printf("Entrez votre coup (ex: 3 c3)(dernier coup:ligne:%d colonne:%d): ",game->lastMoveRow+1,game->lastMoveCol+1);
     if (scanf("%d %c%d", &grid, &col, &row) != 3) {
         printf("Erreur de saisie. Réessayez.\n");
         return 0; // Échec de la saisie

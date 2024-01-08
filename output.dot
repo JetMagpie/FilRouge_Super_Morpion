@@ -5,14 +5,14 @@ digraph super_morpion {
     <TR>
       <TD><TABLE border="1" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
   <TR>
+<TD bgcolor="white"> </TD>
 <TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
 <TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
 <TD bgcolor="white">o</TD>
-<TD bgcolor="white">x</TD>
   </TR>
   <TR>
 <TD bgcolor="white">x</TD>
@@ -103,7 +103,7 @@ digraph super_morpion {
   </TR>
   <TR>
 <TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white">x</TD>
 <TD bgcolor="white">o</TD>
   </TR>
   <TR>
@@ -136,8 +136,8 @@ digraph super_morpion {
       <TD><TABLE border="1" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
   <TR>
 <TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
 <TD bgcolor="white">x</TD>
@@ -145,8 +145,8 @@ digraph super_morpion {
 <TD bgcolor="white"> </TD>
   </TR>
   <TR>
+<TD bgcolor="white">x</TD>
 <TD bgcolor="white">o</TD>
-<TD bgcolor="white"> </TD>
 <TD bgcolor="white"> </TD>
   </TR>
 </TABLE>
@@ -158,12 +158,12 @@ digraph super_morpion {
 <TD bgcolor="white">x</TD>
   </TR>
   <TR>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
 <TD bgcolor="white"> </TD>
 <TD bgcolor="white">x</TD>
   </TR>
   <TR>
-<TD bgcolor="white"> </TD>
+<TD bgcolor="white">o</TD>
 <TD bgcolor="white">o</TD>
 <TD bgcolor="white">x</TD>
   </TR>
