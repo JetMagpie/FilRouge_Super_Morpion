@@ -6,7 +6,7 @@
 //#include "supermorpion.h"
 #include "minimax.h"
 
-int main(){
+int main(int argc,char *argv[]){
 
 #ifdef TTTREE_ENABLE
     GameState gameState;
@@ -35,10 +35,10 @@ int main(){
     while (!isFinal(&game)) {
         int p=1;
 
-        //if (!inputMove(&game)) {
-       //     // Demande à nouveau si la saisie est invalide
-     //       continue;
-       // }
+        if (!inputMove(&game)) {
+           // Demande à nouveau si la saisie est invalide
+           continue;
+        }
 
         //displayGame(&game);
         printf("\n");
@@ -56,7 +56,7 @@ int main(){
         // Vérifier l'état du jeu
         gameOver= evaluateGameState(&game);
 
-        
+
 
     }
     if (gameOver == 10) {

@@ -8,7 +8,7 @@ tttree: $(SRCS)
 	$(CC) $(CFLAGS) -DTTTREE_ENABLE $(SRCS) -o $@
 
 test_tttree: tttree
-	./tttree "1o11o1oxx x" > g1.dot
+	./tttree "x21o11xo o" > g1.dot
 	dot g1.dot -T png -o g1.png
 
 sm_refresh: $(SRCS)
