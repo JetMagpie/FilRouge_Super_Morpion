@@ -47,14 +47,12 @@ void initializeSuperMorpion(SuperMorpion *game) {
 
 int validateMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex) {
     // Validation des indices
-    /*
     if (gridIndex < 0 || gridIndex >= 9 ||
         rowIndex < 0 || rowIndex >= 3 ||
         colIndex < 0 || colIndex >= 3) {
       //  printf("Coup invalide. Réessayez.\n");
         return 0; // Coup invalide
     }
-    */
 
     
     // Vérifier si le coup est dans la bonne grille

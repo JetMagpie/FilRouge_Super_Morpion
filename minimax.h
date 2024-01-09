@@ -5,7 +5,7 @@
 #ifndef MINIMAX_H
 #define MINIMAX_H
 
-
+void setHorizon(int horizon);
 
 int min(int a, int b) ;
 

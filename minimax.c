@@ -4,6 +4,10 @@
 
 int MAXdep=100;
 
+void setHorizon(int horizon){
+    MAXdep=horizon;
+}
+
 int min(int a, int b) {
     return (a < b) ? a : b;
 }
@@ -224,7 +228,7 @@ void computerMove(SuperMorpion *game) {
             }
         }
     }
-    printf("computer move:%d%d\n",bestGridRow*3+bestGridCol+1,bestMoveRow*3+bestMoveCol+1);
+    printf("%d%d\n",bestGridRow*3+bestGridCol+1,bestMoveRow*3+bestMoveCol+1);
     if(evaluateGameState(game)!=0) return;
     // Jouer le meilleur coup trouvé
     //game->smallGrids[bestGridRow][bestGridCol].grid[bestMoveRow][bestMoveCol] = currentPlayer;

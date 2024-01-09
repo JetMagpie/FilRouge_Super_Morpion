@@ -5,55 +5,55 @@ digraph super_morpion {
     <TR>
       <TD><TABLE border="1" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
   <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">x</TD>
-  </TR>
-</TABLE>
-</TD>
-      <TD><TABLE border="1" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
-  <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-  </TR>
-  <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-  </TR>
-  <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
 </TABLE>
 </TD>
       <TD><TABLE border="1" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
   <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+</TABLE>
+</TD>
+      <TD><TABLE border="1" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
 </TABLE>
 </TD>
@@ -61,37 +61,37 @@ digraph super_morpion {
     <TR>
       <TD><TABLE border="1" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
   <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
 </TABLE>
 </TD>
       <TD><TABLE border="1" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
   <TR>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
+<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
+<TD bgcolor="white"> </TD>
 <TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
 </TABLE>
 </TD>
@@ -99,17 +99,17 @@ digraph super_morpion {
   <TR>
 <TD bgcolor="white"> </TD>
 <TD bgcolor="white"> </TD>
-<TD bgcolor="white">x</TD>
-  </TR>
-  <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-  </TR>
-  <TR>
-<TD bgcolor="white">x</TD>
 <TD bgcolor="white"> </TD>
-<TD bgcolor="white">o</TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
 </TABLE>
 </TD>
@@ -117,57 +117,55 @@ digraph super_morpion {
     <TR>
       <TD><TABLE border="1" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
   <TR>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
 </TABLE>
 </TD>
       <TD><TABLE border="1" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
   <TR>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">x</TD>
-  </TR>
-  <TR>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
 <TD bgcolor="white"> </TD>
   </TR>
   <TR>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+  </TR>
+  <TR>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
 </TABLE>
 </TD>
       <TD><TABLE border="1" cellspacing="0" cellpadding="4" style="rounded" bgcolor="white">
   <TR>
-<TD bgcolor="white">x</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">x</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
 <TD bgcolor="white"> </TD>
 <TD bgcolor="white"> </TD>
-<TD bgcolor="white">x</TD>
+<TD bgcolor="white"> </TD>
   </TR>
   <TR>
-<TD bgcolor="white">x</TD>
 <TD bgcolor="white"> </TD>
-<TD bgcolor="white">o</TD>
-<TD bgcolor="white">x</TD>
+<TD bgcolor="white"> </TD>
+<TD bgcolor="white"> </TD>
   </TR>
 </TABLE>
 </TD>
