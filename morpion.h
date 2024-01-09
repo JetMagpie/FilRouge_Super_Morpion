@@ -26,4 +26,5 @@ int minimax(GameState *gameState, char player) ;
 void generateGraphvizNode(GameState *gameState, int nodeId) ;
 
 void generateDecisionTree(GameState *gameState, int parentId) ;
+
 #endif

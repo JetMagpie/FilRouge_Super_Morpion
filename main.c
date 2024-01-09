@@ -2,51 +2,41 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "morpion.h"
-#include "supermorpion.h"
+//#include "morpion.h"
+//#include "supermorpion.h"
 #include "minimax.h"
 
-int main(int argc, char *argv[]){
-    GameState gameState;
-
-    //test 
-    //parseFEN("o2xoox2 x", &gameState);
-
- /*   // Afficher la grille et le joueur actuel pour tester
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            printf("%c ", gameState.grid[i][j]);
-        }
-        printf("\n");
-    }
-    printf("Joueur actuel : %c\n", gameState.currentPlayer);
-
-    printf("Winner : %d\n",minimax(&gameState,gameState.currentPlayer));
-    */
+int main(){
 
 #ifdef TTTREE_ENABLE
+    GameState gameState;
     parseFEN(argv[1], &gameState);
     printf("digraph {\n");
     generateDecisionTree(&gameState,-1);
     printf("}\n");
 #endif
-
-#ifdef SM_REFRESH_ENABLE
+   
+#ifdef SM_REFRESH_ENABLE   
     SuperMorpion game;
     initializeSuperMorpion(&game);
     //game.smallGrids[1][1].grid[1][1]='x';
-    game.currentPlayer='x';
+  char *str="OXOXOXXOx7o 83 x";
+  superparseFEN(&game,str);
+    displayGame(&game);
+
+    
+    //game.currentPlayer='x';
     int gameOver=0;
-    while (!gameOver) {
+    while (!isFinal(&game)) {
+        int p=1;
 
+        //if (!inputMove(&game)) {
+       //     // Demande à nouveau si la saisie est invalide
+     //       continue;
+       // }
 
-        if (!inputMove(&game)) {
-            // Demande à nouveau si la saisie est invalide
-            continue;
-        }
-
-        displayGame(&game);
-
+        //displayGame(&game);
+        printf("\n");
         computerMove(&game);
 
         // ... affichage du jeu ...
@@ -60,9 +50,6 @@ int main(int argc, char *argv[]){
 
         // Vérifier l'état du jeu
         gameOver= evaluateGameState(&game);
-        if (gameOver != 0) break; // Le jeu est terminé
-
-
     }
     if (gameOver == 10) {
         printf("Joueur 'x' gagne!\n");
@@ -72,4 +59,5 @@ int main(int argc, char *argv[]){
         printf("Match nul!\n");
     }
 #endif
+    
 }
