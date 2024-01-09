@@ -224,6 +224,7 @@ void computerMove(SuperMorpion *game) {
             }
         }
     }
+    printf("computer move:%d%d\n",bestGridRow*3+bestGridCol+1,bestMoveRow*3+bestMoveCol+1);
     if(evaluateGameState(game)!=0) return;
     // Jouer le meilleur coup trouvé
     //game->smallGrids[bestGridRow][bestGridCol].grid[bestMoveRow][bestMoveCol] = currentPlayer;

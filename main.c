@@ -56,6 +56,8 @@ int main(){
         // Vérifier l'état du jeu
         gameOver= evaluateGameState(&game);
 
+        
+
     }
     if (gameOver == 10) {
         printf("Joueur 'x' gagne!\n");
