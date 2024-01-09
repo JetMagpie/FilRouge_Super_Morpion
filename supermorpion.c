@@ -44,12 +44,12 @@ void initializeSuperMorpion(SuperMorpion *game) {
 }
 
 
-int validateMove(SuperMorpion *game, int isai, int gridIndex, int rowIndex, int colIndex) {
+int validateMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex) {
     // Validation des indices
     if (gridIndex < 0 || gridIndex >= 9 ||
         rowIndex < 0 || rowIndex >= 3 ||
         colIndex < 0 || colIndex >= 3) {
-        if(!isai)printf("Coup invalide. Réessayez.\n");
+        //printf("Coup invalide. Réessayez.\n");
         return 0; // Coup invalide
     }
 
@@ -64,7 +64,7 @@ int validateMove(SuperMorpion *game, int isai, int gridIndex, int rowIndex, int 
 
     // Vérifier si la case est vide
     if (game->smallGrids[gridIndex / 3][gridIndex % 3].grid[rowIndex][colIndex] != ' ') {
-        if(!isai)printf("Coup invalide. Réessayez.\n");
+        //printf("Coup invalide. Réessayez.\n");
         return 0; // Coup invalide
     }
 
@@ -98,7 +98,7 @@ int inputMove(SuperMorpion *game) {
         game->lastMoveCol=-1;
 
     }
-    if (!validateMove(game, 0, gridIndex, rowIndex, colIndex)) {
+    if (!validateMove(game, gridIndex, rowIndex, colIndex)) {
         printf("Coup invalide. Réessayez.\n");
         for(int i=0;i<3;i++)
             for(int j=0;j<3;j++)

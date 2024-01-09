@@ -22,7 +22,7 @@ char* generateSmallGridGraphviz(GameState grid) ;
 
 void displaySuperMorpionGraphviz(SuperMorpion *game, FILE *file) ;
 
-int validateMove(SuperMorpion *game, int isai, int gridIndex, int rowIndex, int colIndex) ;
+int validateMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex) ;
 
 void updateGridState(GameState *grid) ;
 #endif
