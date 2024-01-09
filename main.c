@@ -16,13 +16,18 @@ int main(){
     printf("}\n");
 #endif
    
-#ifdef SM_REFRESH_ENABLE   
+//#ifdef SM_REFRESH_ENABLE   
     SuperMorpion game;
     initializeSuperMorpion(&game);
     //game.smallGrids[1][1].grid[1][1]='x';
-  char *str="OXOXOXXOx7o 83 x";
+  char *str="ox4xoxOOOX2xooox1oXx2xo4oox4ox 84 x";
   superparseFEN(&game,str);
     displayGame(&game);
+    for(int i=0;i<3;i++)
+    for(int j=0;j<3;j++)
+    {
+        updateGridState(&game.smallGrids[i][j]);
+    }
 
     
     //game.currentPlayer='x';
@@ -50,6 +55,7 @@ int main(){
 
         // Vérifier l'état du jeu
         gameOver= evaluateGameState(&game);
+
     }
     if (gameOver == 10) {
         printf("Joueur 'x' gagne!\n");
@@ -58,6 +64,6 @@ int main(){
     } else {
         printf("Match nul!\n");
     }
-#endif
+//#endif
     
 }

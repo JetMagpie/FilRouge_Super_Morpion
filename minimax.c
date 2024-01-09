@@ -54,13 +54,11 @@ int playMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex) {
 }
 
 int superminimax(SuperMorpion *game, int depth, char player,int alpha, int beta) {
-    int score = evaluateGameState(game);
-    int playersign= (player=='x') ? 1 : -1;
-    if (depth >= MAXdep || score != 0) {
+    
+    if (depth >= MAXdep || isFinal(game)) {
+        int score = evaluateGameState(game);
+        int playersign= (player=='x') ? 1 : -1;
         return playersign * score; // Retourner le score si jeu terminé ou profondeur max atteinte
-    }
-    else{
-        if(isFinal(game)) return 0;
     }
     
     int bestScore = -100 ;
@@ -92,7 +90,7 @@ int superminimax(SuperMorpion *game, int depth, char player,int alpha, int beta)
 
                             // Annuler le coup
                             grid->grid[row][col] = ' ';
-                            updateGridState(grid);
+                            grid->winner=' ';
                             game->currentPlayer = player; // Restaurer le joueur actuel
 
                             game->lastMoveRow=lastMoveRow;
@@ -102,7 +100,7 @@ int superminimax(SuperMorpion *game, int depth, char player,int alpha, int beta)
                             
                             // la coupure alpha-bêta
                             alpha = max(alpha, currentScore);
-                        if (alpha >= beta) {
+                        if (alpha >= beta || alpha==10) {
                             return alpha; // Coupure bêta
                         }
                             }
@@ -167,7 +165,7 @@ int evaluateGameState(SuperMorpion *game) {
         if (countX >= 5) return 10;  // 'x' gagne
         else if (countO >= 5) return -10; // 'o' gagne
 
-    return 0; // Le jeu continue
+    return 0; // draw
 }
 
 void computerMove(SuperMorpion *game) {
@@ -195,9 +193,9 @@ void computerMove(SuperMorpion *game) {
                 for (int col = 0; col < 3; col++) 
                     if(game->smallGrids[gridRow][gridCol].grid[row][col]==' '){
                     // Vérifier si le coup est valide
-                    if (validateMove(game, gridRow*3+gridCol , row, col)) {
+                    if (playMove(game, gridRow*3+gridCol,row,col)) {
                         // Jouer le coup
-                        playMove(game, gridRow*3+gridCol,row,col);
+                        
                         //game->smallGrids[gridRow][gridCol].grid[row][col] = currentPlayer;
                        // updateGridState(&game->smallGrids[gridRow][gridCol]);
                         //game->currentPlayer=opponentPlayer;
@@ -209,7 +207,10 @@ void computerMove(SuperMorpion *game) {
                         game->currentPlayer=currentPlayer;
                         game->lastMoveRow=lastMoveRow;
                         game->lastMoveCol=lastMoveCol;
-
+                        if(gridRow==1)
+                        {
+                        int ikk=1;
+                        }
                         // Mettre à jour le meilleur score et le meilleur coup
                         if (score > bestScore) {
                             bestScore = score;
@@ -233,7 +234,34 @@ void computerMove(SuperMorpion *game) {
 }
 
 int isFinal(SuperMorpion *game) {
-    
+        // Vérifier les lignes et les colonnes pour la victoire
+    for (int i = 0; i < 3; i++) {
+        // Vérifier les lignes
+        if (game->smallGrids[i][0].winner == game->smallGrids[i][1].winner &&
+            game->smallGrids[i][1].winner == game->smallGrids[i][2].winner &&
+            game->smallGrids[i][0].winner != ' ') {
+            return 1;
+        }
+
+        // Vérifier les colonnes
+        if (game->smallGrids[0][i].winner == game->smallGrids[1][i].winner &&
+            game->smallGrids[1][i].winner == game->smallGrids[2][i].winner &&
+            game->smallGrids[0][i].winner != ' ') {
+            return 1;
+        }
+    }
+
+    // Vérifier les diagonales
+    if (game->smallGrids[0][0].winner == game->smallGrids[1][1].winner &&
+        game->smallGrids[1][1].winner == game->smallGrids[2][2].winner &&
+        game->smallGrids[0][0].winner != ' ') {
+        return 1;
+    }
+    if (game->smallGrids[0][2].winner == game->smallGrids[1][1].winner &&
+        game->smallGrids[1][1].winner == game->smallGrids[2][0].winner &&
+        game->smallGrids[0][2].winner != ' ') {
+        return 1;
+    }
 
      // Compter les marqueurs si aucun alignement n'est construit et aucune case n'est disponible
     int countX = 0, countO = 0;
