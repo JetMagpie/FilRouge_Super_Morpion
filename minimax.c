@@ -72,7 +72,6 @@ int superminimax(SuperMorpion *game, int depth, char player,int fathervalue) {
         targetGridRow = -1;
         targetGridCol = -1;
     }
-
     for (int gridRow = 0; gridRow < 3; gridRow++) {
         for (int gridCol = 0; gridCol < 3; gridCol++) {
             if (targetGridRow == -1 || (gridRow == targetGridRow && gridCol == targetGridCol)) {
@@ -85,37 +84,34 @@ int superminimax(SuperMorpion *game, int depth, char player,int fathervalue) {
                                 int tt=1;
                             }
                             // Jouer le coup
-                            if(playMove(game, (gridRow) * 3 + (gridCol) , row, col)){
-
-                            
+                            if(playMove(game, (gridRow) * 3 + (gridCol) , row, col))
+                            {
+            
                             // Appel récursif de minimax
                             
-                            int currentScore = playersign * superminimax(game, depth + 1, (player == 'x') ? 'o' : 'x',bestScore);
+                            int currentScore = - superminimax(game, depth + 1, (player == 'x') ? 'o' : 'x',bestScore);
 
-                            if(depth==1)
-                            {
-                                int pp=1;
-                            }
                             // Annuler le coup
                             grid->grid[row][col] = ' ';
                             grid->winner = ' ';
                             game->currentPlayer = player; // Restaurer le joueur actuel
 
-                            
+                            game->lastMoveRow=lastMoveRow;
+                            game->lastMoveCol=lastMoveCol;
                             // Mettre à jour le meilleur score
                             if(bestScore<currentScore) 
                             {
                                 bestScore=currentScore;
                             }
                             
-                            bestScore = max(bestScore, currentScore);
                             
                             // la coupure alpha-bêta
                             if(bestScore>fathervalue && fathervalue != -1000 && bestScore!=-100) 
-                            return bestScore;
+                            {
+                            return playersign * bestScore;
                             }
-                            game->lastMoveRow=lastMoveRow;
-                            game->lastMoveCol=lastMoveCol;
+                            }
+                            
                             }
                              
                     }
@@ -123,10 +119,8 @@ int superminimax(SuperMorpion *game, int depth, char player,int fathervalue) {
             }
         }
     }
-    if(bestScore==100 || bestScore==-100)
-    {
-        int flag=1;
-    }
+
+   //     int f=playersign * bestScore;
     return playersign * bestScore;
 }
 
@@ -263,7 +257,7 @@ int isFinal(SuperMorpion *game) {
             
 
     // Si toutes les cases sont remplies et aucun alignement n'a été construit
-    if (emptySpaces == 0) {
+    if (emptySpaces == 0 || countO>=5 || countX>=5) {
         return 1; // Match nul si aucun joueur n'a 5 marqueurs
     }
 
