@@ -28,6 +28,7 @@ void displayGame(SuperMorpion *game) {
             printf("\n");
         }
     }
+    printf("\n");
 }
 
 void initializeSuperMorpion(SuperMorpion *game) {
@@ -249,9 +250,9 @@ void superparseFEN(SuperMorpion *game, const char *fen) {
     int lastMoveGrid,lastMoveCase;
     
     lastMoveGrid=fen[fenIndex+1]-'0';
-    lastMoveCase=fen[fenIndex+2]-'0';
+    lastMoveCase=fen[fenIndex+2]-'0'-1;
     game->currentPlayer=fen[fenIndex+4];
-    game->lastMoveCol=lastMoveCase%3-1;
-    game->lastMoveRow=(lastMoveCase+1)/3;
+    game->lastMoveCol=lastMoveCase%3;
+    game->lastMoveRow=lastMoveCase/3;
     return ;
 }

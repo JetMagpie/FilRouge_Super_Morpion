@@ -11,8 +11,8 @@ int main(){
     //test 
     GameState gameState;
     parseFEN("o2xoox2 x", &gameState);
-
- /*   // Afficher la grille et le joueur actuel pour tester
+/*
+  // Afficher la grille et le joueur actuel pour tester
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
             printf("%c ", gameState.grid[i][j]);
@@ -22,9 +22,9 @@ int main(){
     printf("Joueur actuel : %c\n", gameState.currentPlayer);
 
     printf("Winner : %d\n",minimax(&gameState,gameState.currentPlayer));
-    */
+    
 
-   /*
+   
     printf("digraph {\n");
     generateDecisionTree(&gameState,-1);
     printf("}\n");
@@ -33,22 +33,22 @@ int main(){
     SuperMorpion game;
     initializeSuperMorpion(&game);
     //game.smallGrids[1][1].grid[1][1]='x';
-  char *str="OX99OXXOx7o 83 o";
+  char *str="OXOXOXXOx7o 83 x";
   superparseFEN(&game,str);
     displayGame(&game);
 
     
     //game.currentPlayer='x';
     int gameOver=0;
-    while (!gameOver) {
+    while (!isFinal(&game)) {
+        int p=1;
 
+        //if (!inputMove(&game)) {
+       //     // Demande à nouveau si la saisie est invalide
+     //       continue;
+       // }
 
-        if (!inputMove(&game)) {
-            // Demande à nouveau si la saisie est invalide
-            continue;
-        }
-
-        displayGame(&game);
+        //displayGame(&game);
         printf("\n");
         computerMove(&game);
 
@@ -63,13 +63,6 @@ int main(){
 
         // Vérifier l'état du jeu
         gameOver= evaluateGameState(&game);
-        if(isFinal)
-        {
-            int ij=1;
-        }
-        if (isFinal(&game)) break; // Le jeu est terminé
-
-
     }
     if (gameOver == 10) {
         printf("Joueur 'x' gagne!\n");
@@ -79,5 +72,4 @@ int main(){
         printf("Match nul!\n");
     }
     
-
 }
