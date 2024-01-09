@@ -3,6 +3,7 @@
 #ifndef MORPION_H
 #define MORPION_H
 
+
 // Structure pour représenter l'état du jeu
 typedef struct {
     char grid[3][3];
