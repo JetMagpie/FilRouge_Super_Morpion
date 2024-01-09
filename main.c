@@ -2,8 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-//#include "morpion.h"
-//#include "supermorpion.h"
+#include "morpion.h"
+#include "supermorpion.h"
 #include "minimax.h"
 
 int main(int argc,char *argv[]){
@@ -61,17 +61,11 @@ int main(int argc,char *argv[]){
     if(argc<2)return 0;
     SuperMorpion game;
     initializeSuperMorpion(&game);
-    //char input[81];
     int gameOver=0;
-    //printf("Entrez le jeu:");
-    //fgets(input, sizeof(input), stdin);
     //char *str="ox4xoxOOOX2xooox1oXx2xo4oox4ox 84 x";
     superparseFEN(&game, argv[1]);
     if (!isFinal(&game)) {
         computerMove(&game);
-        // ... affichage du jeu ...
-        //displayGame(&game);
-        // Vérifier l'état du jeu
     }
     gameOver= evaluateGameState(&game);
     if(isFinal(&game)){

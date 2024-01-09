@@ -28,4 +28,16 @@ void updateGridState(GameState *grid) ;
 
 void superparseFEN(SuperMorpion *game, const char *fen) ;
 
+int isGridPlayable(GameState *grid);
+
+int playMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex);
+
+int evaluateGameState(SuperMorpion *game) ;
+
+int isFinal(SuperMorpion *game) ;
+
+int min(int a, int b) ;
+
+int max(int a, int b) ;
+
 #endif
