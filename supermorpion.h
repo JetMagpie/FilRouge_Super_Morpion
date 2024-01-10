@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 #include "morpion.h"
 
 #ifndef SUPERMORPION_H
@@ -10,6 +11,8 @@ typedef struct {
     char currentPlayer;
     int lastMoveRow; // Dernière ligne jouée
     int lastMoveCol; // Dernière colonne jouée
+    int timelimit;
+    clock_t start_time;
 } SuperMorpion;
 
 void displayGame(SuperMorpion *game);

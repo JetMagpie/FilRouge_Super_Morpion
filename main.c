@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include <unistd.h>
 #include "morpion.h"
 #include "supermorpion.h"
 #include "minimax.h"
 
 int main(int argc,char *argv[]){
+    
 
 #ifdef TTTREE_ENABLE
     GameState gameState;
@@ -16,7 +18,7 @@ int main(int argc,char *argv[]){
     printf("}\n");
 #endif
 
-//#ifdef SM_REFRESH_ENABLE   
+#ifdef SM_REFRESH_ENABLE   
     SuperMorpion game;
     initializeSuperMorpion(&game);
     //printf("Entrez nombre d'horizon:");
@@ -62,18 +64,22 @@ int main(int argc,char *argv[]){
     } else {
         printf("Match nul!\n");
     }
-//#endif
+#endif
 
-#ifdef SM_BOT_ENABLE
+//#ifdef SM_BOT_ENABLE
+    clock_t start_time=clock();
     if(argc<2)return 0;
     SuperMorpion game;
     initializeSuperMorpion(&game);
     int gameOver=0;
     //char *str="ox4xoxOOOX2xooox1oXx2xo4oox4ox 84 x";
     superparseFEN(&game, argv[1]);
+    game.timelimit=atoi(argv[2]);
+    game.start_time=start_time;
     if (!isFinal(&game)) {
         computerMove(&game);
     }
+
     gameOver= evaluateGameState(&game);
     if(isFinal(&game)){
         if (gameOver == 10) {
@@ -84,6 +90,6 @@ int main(int argc,char *argv[]){
             printf("Match nul!\n");
         }
     }
-#endif
+//#endif
     
 }

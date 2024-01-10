@@ -41,6 +41,8 @@ void initializeSuperMorpion(SuperMorpion *game) {
     game->lastMoveCol=-1;
     game->lastMoveRow=-1;
     game->currentPlayer='x';
+    game->timelimit=900;
+    game->start_time=0;
 }
 
 
@@ -228,6 +230,7 @@ void superparseFEN(SuperMorpion *game, const char *fen) {
     game->currentPlayer=fen[fenIndex+4];
     game->lastMoveCol=lastMoveCase%3;
     game->lastMoveRow=lastMoveCase/3;
+    
     return ;
 }
 

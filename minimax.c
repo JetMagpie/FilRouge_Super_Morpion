@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 #include <string.h>
 #include "minimax.h"
 
@@ -9,7 +10,9 @@ void setHorizon(int horizon){
 }
 
 int superminimax(SuperMorpion *game, int depth, char player,int alpha, int beta) {
-    if (depth >= MAXdep || isFinal(game)) {
+    clock_t now=clock();
+    double timetaken=(double)(now-game->start_time)/ CLOCKS_PER_SEC;
+    if (depth >= MAXdep || isFinal(game) || timetaken>game->timelimit) {
         int score = evaluateGameState(game);
         int playersign= (player=='x') ? 1 : -1;
         return playersign * score; // Retourner le score si jeu terminé ou profondeur max atteinte
