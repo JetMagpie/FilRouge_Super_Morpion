@@ -16,13 +16,14 @@ int main(int argc,char *argv[]){
     printf("}\n");
 #endif
 
-#ifdef SM_REFRESH_ENABLE   
+//#ifdef SM_REFRESH_ENABLE   
     SuperMorpion game;
     initializeSuperMorpion(&game);
-    printf("Entrez nombre d'horizon:");
-    int horizon;
-    scanf("%d",&horizon);
-    setHorizon(horizon);
+    //printf("Entrez nombre d'horizon:");
+    //int horizon;
+    //scanf("%d",&horizon);
+    //setHorizon(horizon);
+    if(argc>1)setHorizon(argv[1]-'0');
     displayGame(&game);
     for(int i=0;i<3;i++)
     for(int j=0;j<3;j++)
@@ -41,10 +42,16 @@ int main(int argc,char *argv[]){
         computerMove(&game);
         // ... affichage du jeu ...
         displayGame(&game);
-         FILE *file = fopen("output.dot", "w");
+         FILE *file = fopen("g.dot", "w");
         displaySuperMorpionGraphviz(&game,file); // Appel de la fonction qui écrit dans stdout
         fclose(file);
-        system("dot output.dot -T png -o output.png");
+        char *smPath = getenv("SMPATH");
+        if (smPath != NULL){
+            char* outputCmd;
+            sprintf(outputCmd,"dot g.dot -T png -o %s/g.png",smPath);
+            system(outputCmd);
+        }
+        else system("dot g.dot -T png -o g.png");
         // Vérifier l'état du jeu
         gameOver= evaluateGameState(&game);
     }
@@ -55,7 +62,7 @@ int main(int argc,char *argv[]){
     } else {
         printf("Match nul!\n");
     }
-#endif
+//#endif
 
 #ifdef SM_BOT_ENABLE
     if(argc<2)return 0;

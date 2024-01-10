@@ -189,6 +189,7 @@ void updateGridState(GameState *grid) {
 
 void superparseFEN(SuperMorpion *game, const char *fen) {
     int fenIndex = 0;
+    while(fen[fenIndex]=='\'' || fen[fenIndex]=='\"')fenIndex++;
     // Lire les 9 chaînes FEN pour chaque petite grille
     for (int i = 0; i < 9; i++) {
         GameState *grid = &game->smallGrids[i / 3][i % 3];
