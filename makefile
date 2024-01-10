@@ -18,4 +18,4 @@ sm_bot: $(SRCS)
 	$(CC) $(CFLAGS) -DSM_BOT_ENABLE $(SRCS) -o $@
 
 clean:
-	rm -f tttree sm_refresh sm_bot g1.dot g1.png *.o
+	rm -f tttree sm_refresh sm_bot g.dot g.png *.o

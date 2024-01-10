@@ -25,7 +25,14 @@ int main(int argc,char *argv[]){
     //int horizon;
     //scanf("%d",&horizon);
     //setHorizon(horizon);
-    if(argc>1)setHorizon(argv[1]-'0');
+    if(argc>1)setHorizon(atoi(argv[1]));
+        char *smPath = getenv("SMPATH");
+    if (smPath != NULL) {
+        printf("SMPATH: %s\n", smPath);
+    }
+    else {
+        printf("Can't read SMPATH\n");
+    }
     displayGame(&game);
     for(int i=0;i<3;i++)
     for(int j=0;j<3;j++)
@@ -47,10 +54,9 @@ int main(int argc,char *argv[]){
          FILE *file = fopen("g.dot", "w");
         displaySuperMorpionGraphviz(&game,file); // Appel de la fonction qui écrit dans stdout
         fclose(file);
-        char *smPath = getenv("SMPATH");
         if (smPath != NULL){
-            char* outputCmd;
-            sprintf(outputCmd,"dot g.dot -T png -o %s/g.png",smPath);
+            char outputCmd[128];
+            snprintf(outputCmd,sizeof(outputCmd),"dot g.dot -T png -o %s/g.png",smPath);
             system(outputCmd);
         }
         else system("dot g.dot -T png -o g.png");
@@ -66,7 +72,7 @@ int main(int argc,char *argv[]){
     }
 #endif
 
-//#ifdef SM_BOT_ENABLE
+#ifdef SM_BOT_ENABLE
     clock_t start_time=clock();
     if(argc<2)return 0;
     SuperMorpion game;
@@ -90,6 +96,6 @@ int main(int argc,char *argv[]){
             printf("Match nul!\n");
         }
     }
-//#endif
+#endif
     
 }
