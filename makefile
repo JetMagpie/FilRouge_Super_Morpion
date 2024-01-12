@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -std=c99
 SRCS =  minimax.c morpion.c supermorpion.c main.c
 
-all: sm_refresh
+all: sm_refresh tttree sm_bot
 
 tttree: $(SRCS)
 	$(CC) $(CFLAGS) -DTTTREE_ENABLE $(SRCS) -o $@
@@ -18,4 +18,4 @@ sm_bot: $(SRCS)
 	$(CC) $(CFLAGS) -DSM_BOT_ENABLE $(SRCS) -o $@
 
 clean:
-	rm -f tttree sm_refresh sm_bot g.dot g.png *.o
+	rm -f tttree sm_refresh sm_bot *.dot *.png *.o
