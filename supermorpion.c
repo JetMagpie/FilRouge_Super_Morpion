@@ -302,6 +302,53 @@ int evaluateGameState(SuperMorpion *game) {
     }
     if (countX >= 5) return 10;  // 'x' gagne
     else if (countO >= 5) return -10; // 'o' gagne
+    if (emptySpaces==0)
+    {
+        return 0;
+    }
+    else
+    return countX-countO; // draw
+}
+
+int evaluateGameStatepro(SuperMorpion *game) {
+    // Vérifier les lignes et les colonnes pour la victoire
+    for (int i = 0; i < 3; i++) {
+        // Vérifier les lignes
+        if (game->smallGrids[i][0].winner == game->smallGrids[i][1].winner &&
+            game->smallGrids[i][1].winner == game->smallGrids[i][2].winner &&
+            game->smallGrids[i][0].winner != ' ') {
+            return (game->smallGrids[i][0].winner == 'x') ? 10 : -10;
+        }
+        // Vérifier les colonnes
+        if (game->smallGrids[0][i].winner == game->smallGrids[1][i].winner &&
+            game->smallGrids[1][i].winner == game->smallGrids[2][i].winner &&
+            game->smallGrids[0][i].winner != ' ') {
+            return (game->smallGrids[0][i].winner == 'x') ? 10 : -10;
+        }
+    }
+    // Vérifier les diagonales
+    if (game->smallGrids[0][0].winner == game->smallGrids[1][1].winner &&
+        game->smallGrids[1][1].winner == game->smallGrids[2][2].winner &&
+        game->smallGrids[0][0].winner != ' ') {
+        return (game->smallGrids[0][0].winner == 'x') ? 10 : -10;
+    }
+    if (game->smallGrids[0][2].winner == game->smallGrids[1][1].winner &&
+        game->smallGrids[1][1].winner == game->smallGrids[2][0].winner &&
+        game->smallGrids[0][2].winner != ' ') {
+        return (game->smallGrids[0][2].winner == 'x') ? 10 : -10;
+    }
+     // Compter les marqueurs si aucun alignement n'est construit et aucune case n'est disponible
+    int countX = 0, countO = 0;
+    int emptySpaces = 0;
+    for (int gridRow = 0; gridRow < 3; gridRow++) {
+        for (int gridCol = 0; gridCol < 3; gridCol++) {
+            if (game->smallGrids[gridRow][gridCol].winner == ' ') emptySpaces++;
+            if (game->smallGrids[gridRow][gridCol].winner == 'o') countO++;
+            if (game->smallGrids[gridRow][gridCol].winner == 'x') countX++;
+        }
+    }
+    if (countX >= 5) return 10;  // 'x' gagne
+    else if (countO >= 5) return -10; // 'o' gagne
     return 0; // draw
 }
 

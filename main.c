@@ -54,14 +54,14 @@ int main(int argc,char *argv[]){
          FILE *file = fopen("g.dot", "w");
         displaySuperMorpionGraphviz(&game,file); // Appel de la fonction qui écrit dans stdout
         fclose(file);
-        if (smPath != NULL){
+                if (smPath != NULL){
             char outputCmd[128];
             snprintf(outputCmd,sizeof(outputCmd),"dot g.dot -T png -o %s/g.png",smPath);
             system(outputCmd);
         }
         else system("dot g.dot -T png -o g.png");
         // Vérifier l'état du jeu
-        gameOver= evaluateGameState(&game);
+        gameOver= evaluateGameStatepro(&game);
     }
     if (gameOver == 10) {
         printf("Joueur 'x' gagne!\n");
@@ -86,16 +86,7 @@ int main(int argc,char *argv[]){
         computerMove(&game);
     }
 
-    gameOver= evaluateGameState(&game);
-    if(isFinal(&game)){
-        if (gameOver == 10) {
-            printf("Joueur 'x' gagne!\n");
-        } else if (gameOver == -10) {
-            printf("Joueur 'o' gagne!\n");
-        } else {
-            printf("Match nul!\n");
-        }
-    }
+   
 #endif
     
 }

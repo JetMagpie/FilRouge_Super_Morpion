@@ -3,7 +3,7 @@
 #include <string.h>
 #include "minimax.h"
 
-int MAXdep=12;
+int MAXdep=11;
 
 void setHorizon(int horizon){
     MAXdep=horizon;

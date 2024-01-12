@@ -37,6 +37,8 @@ int playMove(SuperMorpion *game, int gridIndex, int rowIndex, int colIndex);
 
 int evaluateGameState(SuperMorpion *game) ;
 
+int evaluateGameStatepro(SuperMorpion *game);
+
 int isFinal(SuperMorpion *game) ;
 
 int min(int a, int b) ;
